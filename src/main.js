@@ -1,16 +1,14 @@
 import React, { useRef, useEffect, createRef } from 'react'
 
-import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import Tab1 from './tab1'
 import Tab2 from './tab2'
 
-import { createAnimatableComponent, View, Text } from 'react-native-animatable'
+import { View, Text } from 'react-native-animatable'
 import { TouchableWithoutFeedback } from 'react-native'
 import { Icon } from 'react-native-elements'
 
-const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
 
 const allTabs = [
