@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, createRef } from 'react'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 import Tab1 from './tab1'
 import Tab2 from './tab2'
@@ -96,11 +97,13 @@ const App = () => {
 		console.log('render')
 	})
 	return (
-		<Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
-			{allTabs.map((tab, index) => (
-				<Tab.Screen {...tab} key={`item-${index}`} />
-			))}
-		</Tab.Navigator>
+		<SafeAreaView style={{ flex: 1 }}>
+			<Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
+				{allTabs.map((tab, index) => (
+					<Tab.Screen {...tab} key={`item-${index}`} />
+				))}
+			</Tab.Navigator>
+		</SafeAreaView>
 	)
 }
 

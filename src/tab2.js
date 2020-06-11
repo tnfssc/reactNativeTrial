@@ -17,7 +17,7 @@ const Tab2 = (props) => {
 	)
 
 	return (
-		<View animation="fadeIn" ref={theWholeTabRef}>
+		<View animation="fadeIn" ref={theWholeTabRef} style={{ flex: 1 }}>
 			<TouchableWithoutFeedback onPress={() => text.current.shake()}>
 				<Text ref={text} style={{ fontSize: 25 }}>
 					Tab 2

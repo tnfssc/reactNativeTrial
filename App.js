@@ -1,16 +1,19 @@
 import 'react-native-gesture-handler'
 
 import React from 'react'
-import Main from './src/main'
+import App from './src/main'
 import { NavigationContainer } from '@react-navigation/native'
 import { ThemeProvider } from 'react-native-elements'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
-const App = () => (
-	<NavigationContainer>
-		<ThemeProvider>
-			<Main />
-		</ThemeProvider>
-	</NavigationContainer>
+const MainApp = () => (
+	<SafeAreaProvider>
+		<NavigationContainer>
+			<ThemeProvider>
+				<App />
+			</ThemeProvider>
+		</NavigationContainer>
+	</SafeAreaProvider>
 )
 
-export default App
+export default MainApp

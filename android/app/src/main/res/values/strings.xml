@@ -2,4 +2,14 @@
     <string name="app_name">ReactNativeProj</string>
     <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
     <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">pvofo27QJS_0vGDwj4wG76D-kuMJMHP6J02ua</string>
+    <string name="CodePushPublicKey">-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4moC3GsqF7YISFMQ0fnU
+0rUF2xhxNqSGx9/GTxCynsQhR3hceroDXj3rAOTxnNkePB27uZfRDHrH3/LLoj9V
+k2ghKRtfjDwXa85uDK8slSQDB9ZlD1TLQEJDZpKr1OTXY9VwbgtFaotSXoFmG3MO
+RQeALCbrAgDxQ5Q2kJn6rfBuBoszfUz1qZqrlrY74Axerv1/UtTjL8uyF5r00Bxj
+kvTveC2Pm5A3kq6QANktgfKWy9Ugs/4ykZF7fxfH+ukJW+iXwLACrdfzhegg/41H
+5w06m30h0jqhIBZ3nbj5MN+qVbANHJMjz+fXqXx1Ovr1DfGtdKOku/BTWDxojCl1
+iwIDAQAB
+-----END PUBLIC KEY-----</string>
 </resources>

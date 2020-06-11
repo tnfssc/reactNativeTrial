@@ -62,7 +62,7 @@ const Tab1 = (props) => {
 	)
 
 	return (
-		<View ref={theWholeTabRef} style={{ width: '100%', height: '100%' }}>
+		<View ref={theWholeTabRef} style={{ flex: 1 }}>
 			<Stack.Navigator initialRouteName={'Screen1'}>
 				<Stack.Screen name="Screen1" component={Screen1} />
 				<Stack.Screen name="Screen2" component={Screen2} />
