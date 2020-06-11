@@ -2,7 +2,7 @@ import React, { useRef, useCallback } from 'react'
 
 import { TouchableWithoutFeedback } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { View, Text, createAnimatableComponent } from 'react-native-animatable'
+import { View, Text } from 'react-native-animatable'
 import { Button } from 'react-native-elements'
 import { useFocusEffect } from '@react-navigation/native'
 
@@ -10,16 +10,10 @@ const Stack = createStackNavigator()
 
 const Screen1 = (props) => {
 	const text = useRef()
-	const theWholeTabRef = useRef()
-
-	useFocusEffect(
-		useCallback(() => {
-			theWholeTabRef.current.bounceInUp()
-		}, [])
-	)
+	const theWholeScreenRef = useRef()
 
 	return (
-		<View animation="fadeIn" ref={theWholeTabRef}>
+		<View ref={theWholeScreenRef}>
 			<TouchableWithoutFeedback onPress={() => text.current.shake()}>
 				<Text ref={text} style={{ fontSize: 25 }}>
 					Screen1
@@ -32,16 +26,17 @@ const Screen1 = (props) => {
 
 const Screen2 = (props) => {
 	const text = useRef()
-	const theWholeTabRef = useRef()
+	const theWholeScreenRef = useRef()
 
 	useFocusEffect(
 		useCallback(() => {
-			theWholeTabRef.current.bounceInRight()
+			theWholeScreenRef.current.bounceInRight()
+			return () => theWholeScreenRef.current.bounceOutRight()
 		}, [])
 	)
 
 	return (
-		<View animation="fadeIn" ref={theWholeTabRef}>
+		<View ref={theWholeScreenRef}>
 			<TouchableWithoutFeedback onPress={() => text.current.shake()}>
 				<Text ref={text} style={{ fontSize: 25 }}>
 					Screen2
@@ -57,11 +52,22 @@ const Screen2 = (props) => {
 }
 
 const Tab1 = (props) => {
+	const theWholeTabRef = useRef()
+
+	useFocusEffect(
+		useCallback(() => {
+			theWholeTabRef.current.bounceInUp()
+			return () => theWholeTabRef.current.bounceOutUp()
+		}, [])
+	)
+
 	return (
-		<Stack.Navigator initialRouteName={'Screen1'}>
-			<Stack.Screen name="Screen1" component={Screen1} />
-			<Stack.Screen name="Screen2" component={Screen2} />
-		</Stack.Navigator>
+		<View ref={theWholeTabRef} style={{ width: '100%', height: '100%' }}>
+			<Stack.Navigator initialRouteName={'Screen1'}>
+				<Stack.Screen name="Screen1" component={Screen1} />
+				<Stack.Screen name="Screen2" component={Screen2} />
+			</Stack.Navigator>
+		</View>
 	)
 }
 

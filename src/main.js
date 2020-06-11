@@ -32,6 +32,10 @@ const MyTabBar = ({ state, descriptors, navigation }) => {
 
 	const tabIconRefs = useRef([])
 
+	useEffect(() => {
+		tabIconRefs.current[state.index].rubberBand()
+	}, [state.index])
+
 	return (
 		<View style={{ flexDirection: 'row', width: '100%', justifyContent: 'space-evenly' }}>
 			{state.routes.map((route, index) => {
@@ -57,7 +61,6 @@ const MyTabBar = ({ state, descriptors, navigation }) => {
 					})
 					if (!isFocused && !event.defaultPrevented) {
 						navigation.navigate(route.name)
-						tabIconRefs.current[index].rubberBand()
 					}
 				}
 				const onLongPress = () => navigation.emit({ type: 'tabLongPress', target: route.key })
@@ -89,12 +92,9 @@ const MyTabBar = ({ state, descriptors, navigation }) => {
 }
 
 const App = () => {
-	const iconRef = useRef()
-
 	useEffect(() => {
 		console.log('render')
 	})
-
 	return (
 		<Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
 			{allTabs.map((tab, index) => (

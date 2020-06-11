@@ -7,12 +7,12 @@ import { useFocusEffect } from '@react-navigation/native'
 
 const Tab2 = (props) => {
 	const text = useRef()
-
 	const theWholeTabRef = useRef()
 
 	useFocusEffect(
 		useCallback(() => {
 			theWholeTabRef.current.bounceInUp()
+			return () => theWholeTabRef.current.bounceOutUp()
 		}, [])
 	)
 
