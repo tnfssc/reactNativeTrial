@@ -16,7 +16,7 @@ const Screen1 = (props) => {
 		<View ref={theWholeScreenRef}>
 			<TouchableWithoutFeedback onPress={() => text.current.shake()}>
 				<Text ref={text} style={{ fontSize: 25 }}>
-					Screen1
+					Screen1 Reimagined
 				</Text>
 			</TouchableWithoutFeedback>
 			<Button raised title="Goto Screen2" onPress={() => props.navigation.navigate('Screen2')} />
@@ -39,7 +39,7 @@ const Screen2 = (props) => {
 		<View ref={theWholeScreenRef}>
 			<TouchableWithoutFeedback onPress={() => text.current.shake()}>
 				<Text ref={text} style={{ fontSize: 25 }}>
-					Screen2
+					Screen2 Reimagined
 				</Text>
 			</TouchableWithoutFeedback>
 			<Button
