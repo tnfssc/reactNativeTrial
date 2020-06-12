@@ -29,6 +29,10 @@ build/
 local.properties
 *.iml
 
+# keys
+#
+*.pem
+
 # node.js
 #
 node_modules/

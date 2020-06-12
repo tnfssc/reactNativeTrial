@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react'
+import React, { useRef, useCallback, useState } from 'react'
 
 import { TouchableWithoutFeedback } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
@@ -12,23 +12,28 @@ const Stack = createStackNavigator()
 const Screen1 = (props) => {
 	const text = useRef()
 	const theWholeScreenRef = useRef()
+	const [updateText, setUpdateText] = useState('')
 
 	const handleUpdate = () => {
-		codePush.sync({
-			updateDialog: true,
-			installMode: codePush.InstallMode.IMMEDIATE,
-		})
+		codePush
+			.sync({
+				updateDialog: true,
+				installMode: codePush.InstallMode.IMMEDIATE,
+			})
+			.then((res) => setUpdateText(JSON.stringify(res)))
+			.catch((error) => setUpdateText(JSON.stringify(error)))
 	}
 
 	return (
 		<View ref={theWholeScreenRef}>
 			<TouchableWithoutFeedback onPress={() => text.current.shake()}>
 				<Text ref={text} style={{ fontSize: 25 }}>
-					Screen1 Reimagined 44
+					Screen1 Reimagined 44 66
 				</Text>
 			</TouchableWithoutFeedback>
 			<Button raised title="Goto Screen2" onPress={() => props.navigation.navigate('Screen2')} />
 			<Button title="Update App" onPress={handleUpdate} />
+			<Text style={{ fontSize: 25 }}>{updateText}</Text>
 		</View>
 	)
 }
@@ -48,7 +53,7 @@ const Screen2 = (props) => {
 		<View ref={theWholeScreenRef}>
 			<TouchableWithoutFeedback onPress={() => text.current.shake()}>
 				<Text ref={text} style={{ fontSize: 25 }}>
-					Screen2 Reimagined 22
+					Screen2 Reimagined 22 77
 				</Text>
 			</TouchableWithoutFeedback>
 			<Button
