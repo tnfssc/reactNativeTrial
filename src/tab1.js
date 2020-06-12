@@ -5,12 +5,20 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { View, Text } from 'react-native-animatable'
 import { Button } from 'react-native-elements'
 import { useFocusEffect } from '@react-navigation/native'
+import codePush from 'react-native-code-push'
 
 const Stack = createStackNavigator()
 
 const Screen1 = (props) => {
 	const text = useRef()
 	const theWholeScreenRef = useRef()
+
+	const handleUpdate = () => {
+		codePush.sync({
+			updateDialog: true,
+			installMode: codePush.InstallMode.IMMEDIATE,
+		})
+	}
 
 	return (
 		<View ref={theWholeScreenRef}>
@@ -20,6 +28,7 @@ const Screen1 = (props) => {
 				</Text>
 			</TouchableWithoutFeedback>
 			<Button raised title="Goto Screen2" onPress={() => props.navigation.navigate('Screen2')} />
+			<Button title="Update App" onPress={handleUpdate} />
 		</View>
 	)
 }
